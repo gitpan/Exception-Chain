@@ -9,7 +9,7 @@ use Class::Accessor::Lite (
 use Time::Piece qw(localtime);
 use Time::HiRes qw(gettimeofday tv_interval);
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 # class method
 sub new {
@@ -83,7 +83,7 @@ sub throw {
     else {
         $self = $class->new;
         push @{$self->{stack}}, $builded_args->{error};
-        $self->rethrow($builded_args->{message});
+        $self->rethrow(%{$builded_args});
     }
     $self->logging($builded_args);
     die $self;
