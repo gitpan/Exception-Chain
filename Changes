@@ -1,5 +1,8 @@
 Revision history for Perl extension Exception-Chain
 
+0.06 2014-05-23T11:03:32Z
+    - fix using s///gc to s///g ...
+
 0.05 2014-05-23T11:00:21Z
     - fix bug to remove new line character
 

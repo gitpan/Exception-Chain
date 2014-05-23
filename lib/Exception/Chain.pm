@@ -10,7 +10,7 @@ use Time::Piece qw(localtime);
 use Time::HiRes qw(gettimeofday tv_interval);
 use Data::Dumper;
 
-our $VERSION = "0.05";
+our $VERSION = "0.06";
 
 # class method
 sub new {
@@ -110,7 +110,7 @@ sub rethrow {
 sub to_string {
     my $self = shift;
     my $string = join( ' ', @{$self->{stack}} );
-    $string =~ s/\n//gc;
+    $string =~ s/\n//g;
     return $string;
 }
 
