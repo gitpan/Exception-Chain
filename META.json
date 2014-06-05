@@ -62,7 +62,7 @@
    "provides" : {
       "Exception::Chain" : {
          "file" : "lib/Exception/Chain.pm",
-         "version" : "0.07"
+         "version" : "0.08"
       }
    },
    "release_status" : "stable",
@@ -76,7 +76,7 @@
          "web" : "https://github.com/hixi-hyi/p5-Exception-Chain"
       }
    },
-   "version" : "0.07",
+   "version" : "0.08",
    "x_contributors" : [
       "Syohei YOSHIDA <syohex@gmail.com>",
       "Hiroyoshi HOUCHI <info@hixi-hyi.com>"
