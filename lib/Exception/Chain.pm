@@ -3,7 +3,7 @@ use 5.008005;
 use strict;
 use warnings;
 use overload
-    "\"\"" => \&to_string;
+    '""' => sub { $_[0]->to_string || $_[0] };
 
 use Class::Accessor::Lite (
     ro => [qw/ delivery is_delivery_duplicated duplicated_trace /],
@@ -11,8 +11,9 @@ use Class::Accessor::Lite (
 use Time::Piece qw(localtime);
 use Time::HiRes qw(gettimeofday tv_interval);
 use Data::Dumper;
+use Data::Util qw(is_instance);
 
-our $VERSION   = "0.09";
+our $VERSION   = "0.10";
 our $SkipDepth = 0;
 
 # class method
@@ -70,7 +71,7 @@ sub _build_arg {
 
 sub _is_my_instance {
     my ($class, $instance) = @_;
-    ($instance && ref $instance eq 'Exception::Chain') ? 1: 0;
+    is_instance($instance, 'Exception::Chain');
 }
 
 sub dumper {
@@ -127,6 +128,11 @@ sub match {
 sub first_message {
     my $self = shift;
     return $self->{message};
+}
+
+sub add_message {
+    my ($self, $message) = @_;
+    $self->logging($self->_build_arg($message));
 }
 
 sub logging {
